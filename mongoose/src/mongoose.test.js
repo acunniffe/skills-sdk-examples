@@ -6,7 +6,7 @@ describe('mongoose skill', () => {
 	const mongooseSkillTestKit = SkillTestKit(mongooseSkill)
 
 	describe('define model', () => {
-		const defineModelTestKit = mongooseSkillTestKit.testLens('define-model')
+		const defineModelTestKit = mongooseSkillTestKit.testGenerator('define-model')
 
 		it('can parse', () => {
 			const parseResult = defineModelTestKit.parse(
@@ -33,7 +33,7 @@ const TestModel = mongoose.model('ModelNamedModel', new mongoose.Schema({
 	})
 
 	describe('insert record query', () => {
-		const insertRecordQueryTestKit = mongooseSkillTestKit.testLens('insert-record')
+		const insertRecordQueryTestKit = mongooseSkillTestKit.testGenerator('insert-record')
 		it('can generate an insert record section', () => {
 			const result = insertRecordQueryTestKit.generate({
 				fields: {
@@ -56,7 +56,7 @@ const TestModel = mongoose.model('ModelNamedModel', new mongoose.Schema({
 	})
 
 	describe('transformations', () => {
-		const createRouteFromSchemaTestKit = mongooseSkillTestKit.testTransformation('create-route-from-schema')
+		const createRouteFromSchemaTestKit = mongooseSkillTestKit.testRelationship('create-route-from-schema')
 		it('can transform a schema into a POST rest route', () => {
 
 			const transformed = createRouteFromSchemaTestKit.stageTransformation({

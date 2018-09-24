@@ -4,8 +4,8 @@ import requestSkill from './request.skill'
 
 describe('request skill', () => {
 	const requestSkillTestKit = SkillTestKit(requestSkill)
-	const requestLensTestKit = requestSkillTestKit.testLens('http-request')
-	const requestFromRouteTestKit = requestSkillTestKit.testTransformation('request-from-route')
+	const requestLensTestKit = requestSkillTestKit.testGenerator('http-request')
+	const requestFromRouteTestKit = requestSkillTestKit.testRelationship('request-from-route')
 	it('can parse a http request', () => {
 		const parseResult = requestLensTestKit.parse(`
 request.post({uri: '/location'}, function (err, response, body) {

@@ -1,22 +1,22 @@
 import {js, literalWithValue, objectWithValue} from 'optic-skills-sdk'
-import {mongooseQuery} from "./Schemas";
+import {mongooseQuery} from "./abstractions";
 
 //Defining your mongoose model
 export const defineModelLens = js`
 const ModelName = mongoose.model('name', new mongoose.Schema({}));
 `
 
-defineModelLens.name = 'Define Model'
-defineModelLens.id = 'define-model'
-defineModelLens.schema = 'mongoose-schema'
-defineModelLens.value = {
+.name('Define Model')
+.id('define-model')
+.abstractionSchema('mongoose-schema')
+.abstraction({
 	schema: objectWithValue({}),
 	name: literalWithValue('name')
-}
+})
 
-defineModelLens.variables = {
+.variables({
 	ModelName: 'self'
-}
+})
 
 
 //Inserting a record
@@ -32,30 +32,28 @@ new ModelName({
 })
 `
 
-insertARecordLens.name = 'Insert a record'
-insertARecordLens.id = 'insert-record'
-insertARecordLens.value = {
+.name('Insert a record')
+.id('insert-record')
+.abstraction({
 	fields: objectWithValue({})
-}
-insertARecordLens.schema = {
+})
+.abstractionSchema({
 	"type": "object",
 	"properties": {
 		"fields": {
 			"type": "object"
 		}
 	}
-}
-
-insertARecordLens.containers = {
+})
+.containers({
 	success: 'any',
 	failure: 'any'
-}
-
-insertARecordLens.variables = {
+})
+.variables({
 	ModelName: 'self',
 	err: 'self',
 	item: 'self',
-}
+})
 
 //Querying a single record
 export const findingARecord = js`
@@ -72,30 +70,28 @@ ModelName.findOne({}, function (err, item) {
 })
 `
 
-findingARecord.name = 'Query a record'
-findingARecord.id = 'find-one'
-findingARecord.value = {
+.name('Query a record')
+.id('find-one')
+.abstraction({
 	query: objectWithValue({})
-}
-findingARecord.schema = {
+})
+.abstractionSchema({
 	"title": "Find One Document",
 	"type": "object",
 	"properties": {
 		"query": mongooseQuery
 	}
-}
-
-findingARecord.variables = {
+})
+.variables({
 	ModelName: 'self',
 	err: 'self',
 	item: 'self',
-}
-
-findingARecord.containers = {
+})
+.containers({
 	error: 'any',
 	found: 'any',
 	notFound: 'any'
-}
+})
 
 //Querying multiple records
 export const findingAllRecords = js`
@@ -112,28 +108,28 @@ ModelName.find({}, function (err, item) {
 })
 `
 
-findingAllRecords.name = 'Query a record'
-findingAllRecords.id = 'find-all'
-findingAllRecords.value = {
+.name('Query a record')
+.id('find-all')
+.abstraction({
 	query: objectWithValue({})
-}
-findingAllRecords.schema = {
+})
+.abstractionSchema({
 	"title": "Find Documents",
 	"type": "object",
 	"properties": {
 		"query": mongooseQuery
 	}
-}
+})
 
-findingAllRecords.variables = {
+.variables({
 	ModelName: 'self',
 	err: 'self',
 	item: 'self',
-}
+})
 
-findingAllRecords.containers = {
+.containers({
 	error: 'any',
 	found: 'any',
 	notFound: 'any'
-}
+})
 

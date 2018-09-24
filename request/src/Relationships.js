@@ -1,6 +1,6 @@
-import {Transformation} from "optic-skills-sdk";
+import {Relationship} from "optic-skills-sdk";
 
-export const requestFromRoute = Transformation(
+export const requestFromRoute = Relationship(
 'Request from Route',
 'request-from-route',
 'optic:rest/route',

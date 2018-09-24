@@ -1,73 +1,70 @@
 import {js, literalWithValue, collectUnique, tokenWithValue} from 'optic-skills-sdk'
 
-//Parameters Lens
-const parametersLens = js`
+const parameters = js`
 req.query.paramName
 `
-parametersLens.id = 'express-parameter'
-parametersLens.schema = 'optic:rest/parameter'
-parametersLens.value = {
+.id('express-parameter')
+.abstractionSchema('optic:rest/parameter')
+.abstraction({
 	in: tokenWithValue('query'),
 	name: tokenWithValue('paramName')
-}
-
-parametersLens.variables = {
+})
+.variables({
 	req: 'scope'
-}
+})
 
 //Headers Lens
-const headerLens1 = js`
+const header1 = js`
 req.get('X-Header')
 `
-headerLens1.id = 'express-header-function-style'
-headerLens1.schema = 'optic:rest/header'
-headerLens1.value = {
+.id('express-header-function-style')
+.abstractionSchema('optic:rest/header')
+.abstraction({
 	name: literalWithValue('X-Header'),
-}
-
-headerLens1.variables = {
+})
+.variables({
 	req: 'scope'
-}
+})
 
 //Headers Lens
-const headerLens2 = js`
+const header2 = js`
 req.headers['X-Header']
 `
-headerLens2.id = 'express-header-bracket-style'
-headerLens2.schema = 'optic:rest/header'
-headerLens2.value = {
+.id('express-header-bracket-style')
+.abstractionSchema('optic:rest/header')
+.abstraction({
 	name: literalWithValue('X-Header'),
-}
-
-headerLens2.variables = {
+})
+.variables({
 	req: 'scope'
-}
-
+})
 
 //Route Lens
-export const routeLens = js`
+export const route = js`
 app.get('url', (req, res) => {
 	//:handler
 })
 `
-routeLens.id = 'express-endpoint'
-routeLens.schema = 'optic:rest/route'
-routeLens.value = {
+.id('express-endpoint')
+.abstractionSchema('optic:rest/route')
+.abstraction({
 	method: tokenWithValue('get'),
 	url: literalWithValue('url'),
-	parameters: collectUnique(parametersLens),
+	parameters: collectUnique(parameters),
 	headers: collectUnique('optic:rest/header'),
-}
+})
 
-routeLens.containers.handler = 'any'
+.containers({
+	handler: 'any'
+})
 
-routeLens.variables = {
+.variables({
 	req: 'self',
 	res: 'self',
-}
+})
 
-routeLens.sublenses = [
-	parametersLens,
-	headerLens1,
-	headerLens2
-]
+.subgenerators([
+	parameters,
+	header1,
+	header2
+])

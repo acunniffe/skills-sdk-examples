@@ -1,6 +1,6 @@
-import {Transformation} from "optic-skills-sdk";
+import {Relationship} from "optic-skills-sdk";
 
-export const getRouteFromSchema = Transformation(
+export const getRouteFromSchema = Relationship(
 	'Get Route',
 	'get-route-from-schema',
 	'mongoose-schema',
@@ -37,7 +37,7 @@ export const getRouteFromSchema = Transformation(
 	})
 
 
-export const getAllRouteFromSchema = Transformation(
+export const getAllRouteFromSchema = Relationship(
 	'Get All Route',
 	'get-all-route-from-schema',
 	'mongoose-schema',
@@ -70,7 +70,7 @@ export const getAllRouteFromSchema = Transformation(
 	})
 
 
-export const createRouteFromSchema = Transformation(
+export const createRouteFromSchema = Relationship(
 	'Create Route',
 	'create-route-from-schema',
 	'mongoose-schema',

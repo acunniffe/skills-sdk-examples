@@ -5,7 +5,7 @@ describe.only('rest skill', () => {
 	const restSkillTestKit = SkillTestKit(restSkill)
 
 	describe('header schema', () => {
-		const headerTestKit = restSkillTestKit.testSchema('header')
+		const headerTestKit = restSkillTestKit.testAbstraction('header')
 		it('matches valid header model', () => {
 			assert(headerTestKit.test({name: 'Content-Type'}).isMatch)
 		})
@@ -16,7 +16,7 @@ describe.only('rest skill', () => {
 	})
 
 	describe('parameters schema', () => {
-		const parameterTestKit = restSkillTestKit.testSchema('parameter')
+		const parameterTestKit = restSkillTestKit.testAbstraction('parameter')
 
 		it('matches valid parameter model', () => {
 			assert(parameterTestKit.test({in: 'query', name: 'field'}).isMatch)
@@ -29,7 +29,7 @@ describe.only('rest skill', () => {
 
 
 	describe('response schema', () => {
-		const responseTestKit = restSkillTestKit.testSchema('response')
+		const responseTestKit = restSkillTestKit.testAbstraction('response')
 
 		it('matches valid response model', () => {
 			assert(responseTestKit.test({code: 200}).isMatch)
@@ -41,7 +41,7 @@ describe.only('rest skill', () => {
 	})
 
 	describe('route schema', () => {
-		const routeTestKit = restSkillTestKit.testSchema('route')
+		const routeTestKit = restSkillTestKit.testAbstraction('route')
 		it('matches valid route model', () => {
 			assert(routeTestKit.test({method: 'get', url: 'google.com', parameters: [
 					{name: 'token', in: 'body'}

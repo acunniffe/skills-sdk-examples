@@ -1,12 +1,12 @@
 import {Skill} from "optic-skills-sdk";
-import {requestSchema} from "./Schemas";
-import {requestJsLens} from "./Lenses";
-import {requestFromRoute} from "./Transformations";
+import {requestSchema} from "./Abstractions";
+import {requestFromRoute} from "./Relationships";
+import {requestJs} from "./Generators";
 
 export default Skill('optic', 'request', '0.4.0', {
-	schemas: [requestSchema],
-	lenses: [requestJsLens],
-	transformations: [requestFromRoute],
+	abstractions: [requestSchema],
+	generators: [requestJs],
+	relationships: [requestFromRoute],
 	dependencies: {
 		'optic:rest': '0.4.0'
 	}

@@ -1,6 +1,6 @@
-import {Schema} from "optic-skills-sdk";
+import {Abstraction} from "optic-skills-sdk";
 
-export const headerSchema = Schema('header', {
+export const headerSchema = Abstraction('header', {
 	"title": "Header",
 	"type": "object",
 	"required": ["name"],
@@ -11,7 +11,7 @@ export const headerSchema = Schema('header', {
 	}
 })
 
-export const parametersSchema = Schema('parameter', {
+export const parametersSchema = Abstraction('parameter', {
 	"title": "Parameter",
 	"type": "object",
 	"required": ["in", "name"],
@@ -26,7 +26,7 @@ export const parametersSchema = Schema('parameter', {
 	}
 })
 
-export const responsesSchema = Schema('response', {
+export const responsesSchema = Abstraction('response', {
 	"title": "Response",
 	"type": "object",
 	"required": ["code"],
@@ -37,7 +37,7 @@ export const responsesSchema = Schema('response', {
 	}
 })
 
-export const routeSchema = Schema('route', {
+export const routeSchema = Abstraction('route', {
 	"title": "Route",
 	"type": "object",
 	"required": ["method", "url"],

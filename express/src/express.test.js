@@ -4,9 +4,9 @@ import expressSkill from './express.skill'
 
 describe('express skill', () => {
 	const expressSkillTestKit = SkillTestKit(expressSkill)
-
+	
 	describe('parameters', () => {
-		const parametersTestKit = expressSkillTestKit.testLens('express-parameter')
+		const parametersTestKit = expressSkillTestKit.testGenerator('express-parameter')
 
 		it('can generate parameters', () => {
 			const result = parametersTestKit.generate({in: 'query', name: 'testName'})
@@ -34,7 +34,7 @@ describe('express skill', () => {
 	})
 
 	describe('endpoint', () => {
-		const endpointTestKit = expressSkillTestKit.testLens('express-endpoint')
+		const endpointTestKit = expressSkillTestKit.testGenerator('express-endpoint')
 		it('can generate a basic endpoint', () => {
 			const result = endpointTestKit.generate({method: 'get', url: '/testurl'})
 			assert(result.success)

@@ -1,6 +1,6 @@
-import {Schema, RawCode, Token} from "optic-skills-sdk";
+import {Abstraction, RawCode, Token} from "optic-skills-sdk";
 
-export const requestSchema = Schema('request', {
+export const requestSchema = Abstraction('request', {
 	"title": "HTTP Request",
 	"type": "object",
 	"required": ["method"],

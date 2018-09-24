@@ -1,6 +1,6 @@
 import {js, objectWithValue, tokenWithValue} from 'optic-skills-sdk'
 
-export const requestJsLens = js`
+export const requestJs = js`
 request.get({}, function (err, response, body) {
   //:handler
   if (response.statusCode >= 200 && statusCode.status < 300) {
@@ -12,23 +12,23 @@ request.get({}, function (err, response, body) {
 })
 `
 
-requestJsLens.id = 'http-request'
-requestJsLens.name = 'HTTP Request'
-requestJsLens.schema = 'request'
+.id('http-request')
+.name('HTTP Request')
+.abstractionSchema('request')
 
-requestJsLens.value = {
+.abstraction({
 	method: tokenWithValue('get'),
 	options: objectWithValue({})
-}
+})
 
-requestJsLens.containers = {
+.containers({
 	handler: 'any',
 	success: 'any',
 	error: 'any'
-}
+})
 
-requestJsLens.variables = {
+.variables({
 	err: 'self',
 	response: 'self',
 	body: 'self'
-}
+})

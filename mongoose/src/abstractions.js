@@ -1,6 +1,6 @@
-import {Schema, RawCode, Token} from "optic-skills-sdk";
+import {Abstraction, RawCode, Token} from "optic-skills-sdk";
 
-export const mongooseSchema = Schema('mongoose-schema', {
+export const mongooseSchema = Abstraction('mongoose-schema', {
 	"title": "Mongoose Schema",
 	"type": "object",
 	"properties": {
@@ -26,7 +26,7 @@ export const mongooseSchema = Schema('mongoose-schema', {
 	}
 })
 
-export const mongooseQuery = Schema('query', {
+export const mongooseQuery = Abstraction('query', {
 	"title": "Query",
 	"type": "object",
 	"patternProperties": {
